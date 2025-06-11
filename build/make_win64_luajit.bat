@@ -4,7 +4,7 @@ call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary
 
 echo Swtich to x64 build env
 cd %~dp0\luajit-2.1.0b3\src
-call msvcbuild_mt.bat static
+call msvcbuild.bat static
 cd ..\..
 
 mkdir build_lj64 & pushd build_lj64

@@ -53,14 +53,14 @@ echo "Building x86 lib"
 NDKP=$NDKVER/bin/
 NDKCC=$NDKP/i686-linux-androideabi$NDKABI-clang
 NDKCROSS=$NDKP/i686-linux-androideabi-
-NDKARCH=""
+NDKARCH="-march=x86 -mfloat-abi=softfp"
 cd "$SRCDIR"
 make clean
 make HOST_CC="clang -m32" CROSS=$NDKCROSS STATIC_CC=$NDKCC DYNAMIC_CC="$NDKCC -fPIC -O3" TARGET_LD=$NDKCC TARGET_AR="$NDKP/llvm-ar rcus" TARGET_STRIP="$NDKP/llvm-strip" TARGET_SYS=Linux TARGET_FLAGS="--sysroot $ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/sysroot  $NDKARCH"
 
 cd "$DIR"
 mkdir -p build_lj_x86 && cd build_lj_x86
-cmake -DUSING_LUAJIT=ON -DANDROID_ABI=x86 -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake -DANDROID_TOOLCHAIN_NAME=i686-linux-android-clang -DANDROID_NATIVE_API_LEVEL=android-21 ../
+cmake -DUSING_LUAJIT=ON -DANDROID_ABI=x86 -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake -DANDROID_TOOLCHAIN_NAME=i686-linux-android-clang -DANDROID_NATIVE_API_LEVEL=android-$NDKABI ../
 cd "$DIR"
 cmake --build build_lj_x86 --config Release
 mkdir -p plugin_luajit/Plugins/Android/libs/x86/
