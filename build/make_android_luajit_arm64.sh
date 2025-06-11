@@ -36,14 +36,14 @@ NDKVER=$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64
 NDKP=$NDKVER/bin/
 NDKCC=$NDKP/armv7a-linux-androideabi$NDKABI-clang
 NDKCROSS=$NDKP/armv7a-linux-androideabi-
-NDKARCH="-march=armv7-a -mfloat-abi=softfp -Wl,--fix-cortex-a8"
+NDKARCH="-march=armv7-a -mfloat-abi=softfp"
 cd "$SRCDIR"
 make clean
 make HOST_CC="clang -m32" CROSS=$NDKCROSS STATIC_CC=$NDKCC DYNAMIC_CC="$NDKCC -fPIC -O3" TARGET_LD=$NDKCC TARGET_AR="$NDKP/llvm-ar rcus" TARGET_STRIP="$NDKP/llvm-strip" TARGET_SYS=Linux TARGET_FLAGS="--sysroot $ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/sysroot $NDKARCH"
 
 cd "$DIR"
 mkdir -p build_lj_v7a && cd build_lj_v7a
-cmake -DUSING_LUAJIT=ON -DANDROID_ABI=armeabi-v7a -DCMAKE_TOOLCHAIN_FILE=../cmake/android.toolchain.cmake -DANDROID_TOOLCHAIN_NAME=arm-linux-androideabi-4.9 -DANDROID_NATIVE_API_LEVEL=android-$NDKABI ../
+cmake -DUSING_LUAJIT=ON -DANDROID_ABI=armeabi-v7a -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK/build/cmake/android.toolchain.cmake -DANDROID_TOOLCHAIN_NAME=arm-linux-androideabi-4.9 -DANDROID_NATIVE_API_LEVEL=android-$NDKABI ../
 cd "$DIR"
 cmake --build build_lj_v7a --config Release
 mkdir -p plugin_luajit/Plugins/Android/libs/armeabi-v7a/
