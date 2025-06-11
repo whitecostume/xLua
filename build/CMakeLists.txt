@@ -27,8 +27,8 @@ option ( LUAC_COMPATIBLE_FORMAT "compatible format" OFF )
 option ( C_COMPILER "using c compiler" gcc )
 option ( CXX_COMPILER "using c++ compiler" g++ )
 
-set(CMAKE_C_COMPILER  C_COMPILER)
-set(CMAKE_CXX_COMPILER CXX_COMPILER)
+set(CMAKE_C_COMPILER  $"{C_COMPILER}")
+set(CMAKE_CXX_COMPILER $"{CXX_COMPILER}")
 
 find_path(XLUA_PROJECT_DIR NAMES SConstruct
     PATHS 
