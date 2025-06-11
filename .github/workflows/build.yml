@@ -23,7 +23,7 @@ jobs:
           sudo apt-get install gcc-multilib
           ./make_android_luajit_arm64.sh  
       - name: UploadJit
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ./build/plugin_luajit/**/*
           name: plugin_luajit
@@ -47,12 +47,12 @@ jobs:
   #         OHOS_NDK_HOME=~/ohos-sdk/linux/native ./make_ohos_lua54.sh
   #         OHOS_NDK_HOME=~/ohos-sdk/linux/native ./make_ohos_lua53.sh
   #     - name: Upload
-  #       uses: actions/upload-artifact@v3
+  #       uses: actions/upload-artifact@v4
   #       with:
   #         path: ./build/plugin_lua54/**/*
   #         name: plugin_lua54
   #     - name: Upload53
-  #       uses: actions/upload-artifact@v3
+  #       uses: actions/upload-artifact@v4
   #       with:
   #         path: ./build/plugin_lua53/**/*
   #         name: plugin_lua53
@@ -66,7 +66,7 @@ jobs:
           cd build
           ./make_linux64_luajit.sh
       - name: UploadJit
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ./build/plugin_luajit/**/*
           name: plugin_luajit  
@@ -80,7 +80,7 @@ jobs:
           cd build
           ./make_ios_luajit.sh
       - name: UploadJit
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ./build/plugin_luajit/**/*
           name: plugin_luajit
@@ -94,7 +94,7 @@ jobs:
           cd build
           ./make_osx_luajit.sh
       - name: UploadJit
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ./build/plugin_luajit/**/*
           name: plugin_luajit  
@@ -114,7 +114,7 @@ jobs:
           .\make_win64_luajit.bat
       
       - name: UploadJit
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ./build/plugin_luajit/**/*
           name: plugin_luajit
@@ -136,7 +136,7 @@ jobs:
           cd build
           .\make_win32_luajit.bat  
       - name: UploadJit
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ./build/plugin_luajit/**/*
           name: plugin_luajit
