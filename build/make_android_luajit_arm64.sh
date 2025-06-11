@@ -53,10 +53,10 @@ echo "Building x86 lib"
 NDKP=$NDKVER/bin/
 NDKCC=$NDKP/i686-linux-androideabi$NDKABI-clang
 NDKCROSS=$NDKP/i686-linux-androideabi-
-NDKF="--sysroot $ANDROID_NDK/platforms/android-$NDKABI/arch-x86"
+NDKARCH=""
 cd "$SRCDIR"
 make clean
-make HOST_CC="gcc -m32" CROSS=$NDKCROSS STATIC_CC=$NDKCC DYNAMIC_CC="$NDKCC -fPIC -O3" TARGET_LD=$NDKCC TARGET_AR="$NDKP/llvm-ar rcus" TARGET_STRIP="$NDKP/llvm-strip" TARGET_SYS=Linux TARGET_FLAGS="--sysroot $ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
+make HOST_CC="clang -m32" CROSS=$NDKCROSS STATIC_CC=$NDKCC DYNAMIC_CC="$NDKCC -fPIC -O3" TARGET_LD=$NDKCC TARGET_AR="$NDKP/llvm-ar rcus" TARGET_STRIP="$NDKP/llvm-strip" TARGET_SYS=Linux TARGET_FLAGS="--sysroot $ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/sysroot  $NDKARCH"
 
 cd "$DIR"
 mkdir -p build_lj_x86 && cd build_lj_x86
