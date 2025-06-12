@@ -1,3 +1,12 @@
+
+echo "编译 LuaJIT..."
+cd luajit-2.1.0b3
+
+make clean
+make && sudo make install
+
+cd ..
+
 mkdir -p build_lj_osx && cd build_lj_osx
 cmake -DUSING_LUAJIT=ON  -GXcode ../
 cd ..
