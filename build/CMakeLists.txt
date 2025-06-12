@@ -152,6 +152,7 @@ if (APPLE)
             ${THIRDPART_SRC}
         )
         set_target_properties ( xlua PROPERTIES BUNDLE TRUE )
+        set(MACOSX_DEPLOYMENT_TARGET "13.4")
     endif ()
 elseif ("${CMAKE_SYSTEM_NAME}" STREQUAL "Switch")
     add_library(xlua STATIC
