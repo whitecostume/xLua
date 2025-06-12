@@ -1,8 +1,8 @@
 echo "编译 LuaJIT..."
 cd luajit-2.1.0b3
 
+export MACOSX_DEPLOYMENT_TARGET=13.4
 make clean
-make MACOSX_DEPLOYMENT_TARGET=13.4
 make && sudo make install
 
 cd ..
