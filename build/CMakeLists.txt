@@ -143,7 +143,7 @@ if (APPLE)
 		set_xcode_property (xlua IPHONEOS_DEPLOYMENT_TARGET "8.0" "all")
     else ()
         ADD_DEFINITIONS(-DLUA_USE_MACOSX) #osx platform emmylua debugger must have this option or can not load cpath
-        set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64")
+        set(CMAKE_OSX_ARCHITECTURES "x86_64")
         add_library(xlua MODULE
             ${LUA_CORE}
             ${LUA_LIB}
