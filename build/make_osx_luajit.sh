@@ -3,12 +3,12 @@ export MACOSX_DEPLOYMENT_TARGET=13.4
 # echo "编译 LuaJIT..."
 cd luajit-2.1.0b3
 
-make clean
-
 # 编译 x86_64和 arm64
+make clean
 make TARGET_SYS=Darwin CC="clang -arch x86_64"
 mv src/libluajit.a src/libluajit_x86_64.a
 
+make clean
 make TARGET_SYS=Darwin CC="clang -arch arm64"
 mv src/libluajit.a src/libluajit_arm64.a
 # 合并 x86_64 和 arm64 的库
