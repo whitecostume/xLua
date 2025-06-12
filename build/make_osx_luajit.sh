@@ -1,12 +1,20 @@
 export MACOSX_DEPLOYMENT_TARGET=13.4
 
 # echo "编译 LuaJIT..."
-# cd luajit-2.1.0b3
+cd luajit-2.1.0b3
 
-# make clean
-# make && sudo make install
+make clean
 
-# cd ..
+# 编译 x86_64和 arm64
+make TARGET_SYS=Darwin CC="clang -arch x86_64"
+mv src/libluajit.a src/libluajit_x86_64.a
+
+make TARGET_SYS=Darwin CC="clang -arch arm64"
+mv src/libluajit.a src/libluajit_arm64.a
+# 合并 x86_64 和 arm64 的库
+lipo -create src/libluajit_x86_64.a src/libluajit_arm64.a -output src/libluajit.a
+
+cd ..
 
 mkdir -p build_lj_osx && cd build_lj_osx
 cmake -DUSING_LUAJIT=ON  -GXcode ../
